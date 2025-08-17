@@ -10,6 +10,7 @@ Keep tabs on your frozen treasures, avoid food waste, and finally answer that et
 ---
 
 ![Vue 3](https://img.shields.io/badge/vue-3.x-brightgreen?logo=vue.js)
+![Quasar](https://img.shields.io/badge/ui-quasar-1976d2?logo=quasar)
 ![LocalStorage](https://img.shields.io/badge/storage-localStorage-blue)
 ![Deploy-ComingSoon](https://img.shields.io/badge/deploy-netlify-lightgrey?logo=netlify)
 
@@ -29,6 +30,7 @@ Keep tabs on your frozen treasures, avoid food waste, and finally answer that et
 ## 🧰 Built With
 
 - [Vue 3](https://vuejs.org/) – Composition API
+- [Quasar](https://quasar.dev/) – responsive UI framework for Vue
 - [Vite](https://vitejs.dev/) – lightning-fast dev server
 - [Day.js](https://day.js.org/) – date handling
 - `localStorage` – because small apps deserve to be snappy and offline
