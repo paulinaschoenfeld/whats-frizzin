@@ -32,7 +32,7 @@ Keep tabs on your frozen treasures, avoid food waste, and finally answer that et
 - [Vue 3](https://vuejs.org/) – Composition API
 - [Quasar](https://quasar.dev/) – responsive UI framework for Vue
 - [Vite](https://vitejs.dev/) – lightning-fast dev server
-- [Day.js](https://day.js.org/) – date handling
+- [date-fns](https://date-fns.org/) – modern & modular date handling
 - `localStorage` – because small apps deserve to be snappy and offline
 
 ---

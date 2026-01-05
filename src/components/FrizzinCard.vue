@@ -1,13 +1,5 @@
-<script setup lang="ts">
-import type {FrozenItem} from '@/models/FrozenItem';
-
-defineProps<{
-  frizzin: FrozenItem
-}>();
-</script>
-
 <template>
-  <q-card bordered class=" frizzin-card column full-height bg-grey-9 text-white">
+  <q-card bordered class="frizzin-card column full-height bg-grey-9 text-white">
     <q-card-section class="q-pa-md">
       <div class="text-h6 q-mb-xs">{{ frizzin.name }}</div>
 
@@ -39,10 +31,24 @@ defineProps<{
           color="negative"
           text-color="white"
           label="Remove"
+          @click="onRemove"
       />
     </q-card-actions>
   </q-card>
 </template>
+
+<script setup lang="ts">
+import type {FrozenItem} from '@models/frozenItem.ts';
+import {freezerService} from "@/services/freezerService.ts";
+
+const props = defineProps<{
+  frizzin: FrozenItem
+}>();
+
+const onRemove = () => {
+  freezerService.removeItem(props.frizzin.id);
+}
+</script>
 
 <style scoped lang="scss">
 .frizzin-card {

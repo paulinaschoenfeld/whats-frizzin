@@ -1,15 +1,3 @@
-<script setup>
-import FrozenList from "@/components/FrozenList.vue";
-import {ref} from "vue";
-
-const showDialog = ref(false);
-
-const addFrizzin = () => {
-  console.log('add frizzin');
-  showDialog.value = true;
-}
-</script>
-
 <template>
   <q-layout view="hHh lpR fFf">
     <q-header elevated class="bg-dark text-white">
@@ -27,14 +15,49 @@ const addFrizzin = () => {
           <q-btn @click="addFrizzin" color="primary" label="Freeze item" icon="ac_unit" class="q-mt-sm" />
         </div>
 
-<!--        <q-dialog v-model="showDialog" persistent>-->
-<!--          <div>hello!</div>-->
-<!--        </q-dialog>-->
+        <q-dialog v-model="showDialog" persistent no-shake>
+          <AddFrizzin @cancel="closeDialog" @submit="addToFreezer" />
+        </q-dialog>
 
         <FrozenList />
       </q-page>
     </q-page-container>
   </q-layout>
-
-
 </template>
+
+<script setup>
+import FrozenList from "@/components/FrozenList.vue";
+import AddFrizzin from "@components/AddFrizzin.vue";
+import {ref} from "vue";
+import {useQuasar} from "quasar";
+import {freezerService} from "@/services/freezerService.js";
+
+const $q = useQuasar();
+
+const showDialog = ref(false);
+
+const addFrizzin = () => {
+  showDialog.value = true;
+}
+
+const addToFreezer = async (frizzin) => {
+  try {
+    await freezerService.freezeItem(frizzin);
+    $q.notify({
+      type: 'positive',
+      message: `${frizzin.name} is being frozen! ❄️`,
+      icon: 'ac_unit',
+    })
+    showDialog.value = false;
+  } catch (error) {
+    $q.notify({
+      type: 'negative',
+      message: 'Something went wrong!.'
+    });
+  }
+}
+
+const closeDialog = () => {
+  showDialog.value = false;
+}
+</script>
