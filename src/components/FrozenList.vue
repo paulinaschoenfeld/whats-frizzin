@@ -1,14 +1,12 @@
-<script setup lang="ts">
-import {ref} from "vue";
-import {frozenItems} from "../assets/frozenItems.ts";
-import FrizzinCard from "@/components/FrizzinCard.vue";
-
-const frizzins = ref(frozenItems);
-</script>
-
 <template>
   <section class="q-px-lg">
-    <div class="row q-col-gutter-md q-gutter-y-md items-stretch">
+    <div v-if="frizzins.length === 0" class="text-center q-pa-xl">
+      <q-icon name="ac_unit" size="100px" color="blue-2" />
+      <div class="text-h6 text-grey-6">Your freezer is so empty...</div>
+      <div class="text-subtitle2 text-grey-5">Time to freeze something!</div>
+    </div>
+
+    <div v-else class="row q-col-gutter-md q-gutter-y-md items-stretch">
       <div
           v-for="frizzin in frizzins"
           :key="frizzin.id"
@@ -19,6 +17,13 @@ const frizzins = ref(frozenItems);
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import FrizzinCard from "@/components/FrizzinCard.vue";
+import {freezerService} from "@/services/freezerService.ts";
+
+const frizzins = freezerService.items;
+</script>
 
 <style scoped>
 

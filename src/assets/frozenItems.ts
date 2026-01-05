@@ -1,6 +1,6 @@
-import type {FrozenItem} from "../models/FrozenItem.ts";
-import {QuantityType} from "../models/QuantityType.ts";
-import {Category} from "../models/Category.ts";
+import type {FrozenItem} from "@models/frozenItem.ts";
+import {QuantityType} from "@models/quantityType.ts";
+import {Category} from "@models/category.ts";
 
 export const frozenItems: FrozenItem[] = [
     {
